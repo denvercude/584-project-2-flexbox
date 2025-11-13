@@ -55,31 +55,62 @@ div img {
 	background-color: #FFFCE6;
 }
 
+.col-3 {
+  background-color: #E8F4F8;
+}
+
+.col-4 {
+  background-color: #F2E7FF;
+}
+
 /* Tablet Landscape Screen Sizes */
-@media only screen and (min-width: 480px)  {
-	
-  .col-1,
-  .col-2 {
+@media only screen and (min-width: 480px) and (max-width: 767px){
+	.col-1,
+	.col-2 {
 		flex: 0 0 44%;
 	}
-  
-  
 
+	.row-3 .col-1,
+	.row-3 .col-3 {
+		flex: 0 0 92%;
+	}
+	
+	.row-5-item-2 {
+		order: 1;
+		flex: 0 0 92%;
+	}
+	
+	.row-5-item-1 {
+		order: 2;
+		flex: 0 0 44%;
+	}
+	
+	.row-5-item-3 {
+		order: 3;
+		flex: 0 0 44%;
+	}
 
-
+	.row-6 .col-3,
+	.row-6 .col-1 {
+		flex: 0 0 92%;
+	}
 }
+
 /* Desktop screen Sizes */
-@media only screen and (min-width: 768px) {
-  
-  
+@media only screen and (min-width: 768px) {  
  	.col-1 {
 		flex: 0 0 20%;
 	}
-  
-  
   
 	.col-2 {
 		flex: 0 0 44%;
 	}
 
+	.col-3 {
+		flex: 0 0 68%;
+	}
+	
+	.col-4 {
+		flex: 0 0 92%;
+	}
 }
