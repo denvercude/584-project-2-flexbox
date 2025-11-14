@@ -49,6 +49,21 @@ div img {
 	flex-flow: row wrap;
 }
 
+/*Override the default col- styles and make row 6 items dynamically
+grow or shrink in a mirror of row 3*/
+.row-6 {
+  align-items: stretch;
+
+}
+
+.row-6-item-1 {
+  flex: 2 1 60%;
+}
+
+.row-6-item-2 {
+  flex: 1 1 30%;
+}
+
 /* attribute selector to give some margin between columns and apply styles to flex items */
 
 [class*="col-"] {
