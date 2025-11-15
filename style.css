@@ -1,10 +1,11 @@
 /* Border box declaration 
-https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+   https://www.paulirish.com/2012/box-sizing-border-box-ftw/
+   Starting off with the standard border-box reset so padding doesn't make things explode */
 html {
   box-sizing: border-box;
 }
 /* inherit border-box on all elements in the universe and before and after
- */
+   Just making my life easier with consistent sizing everywhere */
 *, 
 *:before, 
 *:after {
@@ -16,15 +17,15 @@ body {
 }
 
 article {
-	text-align: center;
+	text-align: center; /* keeping content centered for uniform card look */
 }
 
 a {
-	color: #2772B0;
+	color: #2772B0; /* keeping default link color I liked */
 }
 
 .wrapper {
-	width: 97%;
+	width: 97%; /* wrapper isn't full width because the tiny margins look nice */
 	max-width: 1200px;
 	margin: 0 auto;
 	float: none;
@@ -35,42 +36,48 @@ div img {
 	width: 100%;
 	max-width: 225px;
 	border-radius: 12px;
-
+  
+	/* adding some "modern" look — shadow + subtle radius */
 	box-shadow: 0 4px 14px rgba(0,0,0,0.18);
 	object-fit: cover;
 	
+	/* added this so the hover animation feels nicer */
 	transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-/* grid system -- mobile first! */
-/* flex contatiner */
 
+/* grid system -- mobile first! */
+/* flex container */
+/* this is the base flex container that every row uses */
 .row {
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row wrap; /* wrap is super important or everything breaks on mobile */
 }
 
-/*Override the default col- styles and make row 6 items dynamically
-grow or shrink in a mirror of row 3*/
+/* Override the default col- styles and make row 6 items dynamically
+   grow or shrink in a mirror of row 3.
+   This is where I forced row 6 to behave differently instead of copying row 3 exactly */
 .row-6 {
-  align-items: stretch;
-
+  align-items: stretch; /* making sure the tall/short cards line up */
 }
 
 .row-6-item-1 {
+  /* wide-left layout: flex-grow:2 gives it dominance */
   flex: 2 1 60%;
 }
 
 .row-6-item-2 {
+  /* right card stays smaller */
   flex: 1 1 30%;
 }
 
-/* attribute selector to give some margin between columns and apply styles to flex items */
-
+/* attribute selector to give some margin between columns 
+   and apply styles to flex items 
+   This is my general column styling — the shadow, padding, spacing, etc. */
 [class*="col-"] {
-	 margin-left: 4%;
+	margin-left: 4%;
   margin-top: 4%;
-  flex: 0 0 92%;
-  
+  flex: 0 0 92%; /* mobile-first: almost full width */
+
   border: 1px solid #e0e0e0;
   border-radius: 12px;
   padding: 16px;
@@ -78,16 +85,17 @@ grow or shrink in a mirror of row 3*/
   background: #ffffff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 
+  /* hover animation to lift the card slightly */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 [class*="col-"]:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  transform: translateY(-4px); /* tiny float effect */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18); /* stronger hover shadow */
 }
 
-/* Add background colors to see how much space each column is taking */
-
+/* Add background colors to see how much space each column is taking
+   (I originally used this just to visualize widths while debugging row 3/6) */
 .col-1 {
 	background-color: #A3CDD9;
 }
@@ -105,17 +113,21 @@ grow or shrink in a mirror of row 3*/
 }
 
 /* Tablet Landscape Screen Sizes */
+/* this is where the layout started getting tricky 
+   and I kept reshuffling row 5 until the order finally made sense */
 @media only screen and (min-width: 480px) and (max-width: 767px){
 	.col-1,
 	.col-2 {
-		flex: 0 0 44%;
+		flex: 0 0 44%; /* half-width cards, two columns */
 	}
 
+	/* row 3 breaks into vertical stack at this size */
 	.row-3 .col-1,
 	.row-3 .col-3 {
-		flex: 0 0 92%;
+		flex: 0 0 92%; /* full width on tablets */
 	}
 	
+	/* messing with the order so row 5 goes big-small-small in the right reading order */
 	.row-5-item-2 {
 		order: 1;
 		flex: 0 0 92%;
@@ -131,27 +143,30 @@ grow or shrink in a mirror of row 3*/
 		flex: 0 0 44%;
 	}
 
+	/* row 6 also collapses to stacked layout here */
 	.row-6 .col-3,
 	.row-6 .col-1 {
-		flex: 0 0 92%;
+		flex: 0 0 92%; /* they both stretch full width */
 	}
 }
 
 /* Desktop screen Sizes */
+/* finally, everything snaps into the “real” multi-column layout */
+/* I kept these values simple on purpose so the other rows could override them */
 @media only screen and (min-width: 768px) {  
  	.col-1 {
-		flex: 0 0 20%;
+		flex: 0 0 20%; /* 4 across */
 	}
   
 	.col-2 {
-		flex: 0 0 44%;
+		flex: 0 0 44%; /* 2 across */
 	}
 
 	.col-3 {
-		flex: 0 0 68%;
+		flex: 0 0 68%; /* wide content column */
 	}
 	
 	.col-4 {
-		flex: 0 0 92%;
+		flex: 0 0 92%; /* full-width */
 	}
 }

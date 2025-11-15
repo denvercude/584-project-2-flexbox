@@ -11,7 +11,9 @@
 
   <body>
     <div class="wrapper">
+
       <!-- row 1, 4 individual boxes -->
+      <!-- row 1 is just the starter row: all equal-sized columns, nothing fancy -->
       <div class="row">
         <article class="col-1">
           <h3>Wyatt Earp</h3>
@@ -38,7 +40,9 @@
           <p><a href="https://en.wikipedia.org/wiki/Sitting_Bull" target="_blank">Read more &gt;&gt;</a></p>
         </article>
       </div>
+
       <!-- row 2, 2 boxes spanning 2 rows -->
+      <!-- playing with bigger columns now, just testing col-2 -->
       <div class="row">
         <article class="col-2">
           <h3>Calamity Jane</h3>
@@ -53,9 +57,14 @@
           <p><a href="https://en.wikipedia.org/wiki/Wild_Bill_Hickok" target="_blank">Read more &gt;&gt;</a></p>
         </article>
       </div>
+
       <!-- row 3: narrow left column, wide right/content column -->
+      <!-- okay this is where I started experimenting with asymmetry -->
+      <!-- goal: skinny left panel, wide right panel, using flexbox instead of fixed widths -->
       <div class="row row-3">
         <article class="col-1 row-3-item row-3-item-1">
+          <!-- left side intentionally narrow -->
+          <!-- using col-1 so flexbox decides width instead of me hardcoding it -->
           <h3>Billy the Kid</h3>
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Billy_the_Kid_tintype%2C_Fort_Sumner%2C_1879-80.jpg/500px-Billy_the_Kid_tintype%2C_Fort_Sumner%2C_1879-80.jpg" alt="Tintype portrait of Billy the Kid.">
           <p>Billy the Kid, born Henry McCarty, was an outlaw and gunfighter of the Old West, closely associated with the Lincoln County War in New Mexico.</p>
@@ -63,6 +72,9 @@
         </article>
 
         <article class="col-3 row-3-item row-3-item-2">
+          <!-- right side is intentionally extra wide -->
+          <!-- this is where I realized I could get a wide panel without manually setting pixel widths -->
+          <!-- basically relying on flex-grow differences -->
           <h3>Buffalo Bill</h3>
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Rosa_Bonheur_-_Portrait_de_Col._William_F._Cody.jpg/500px-Rosa_Bonheur_-_Portrait_de_Col._William_F._Cody.jpg" alt="Painting of Buffalo Bill Cody on horseback.">
           <p>Buffalo Bill, born William F. Cody, was a scout, bison hunter, and showman who created Buffalo Bill’s Wild West, bringing dramatic versions of frontier life to audiences around the world.</p>
@@ -70,7 +82,9 @@
           <p><a href="https://en.wikipedia.org/wiki/Buffalo_Bill" target="_blank">Read more &gt;&gt;</a></p>
         </article>
       </div>
+
       <!-- row 4: one column -->
+      <!-- simple break row to reset the layout after that big row -->
       <div class="row row-4">
         <article class="col-4 row-4-item">
           <h3>Bass Reeves</h3>
@@ -81,7 +95,10 @@
           <p><a href="https://en.wikipedia.org/wiki/Bass_Reeves" target="_blank">Read more &gt;&gt;</a></p>
         </article>
       </div>
+      
       <!-- row 5, 1-2-1 individual boxes -->
+      <!-- trying a symmetric–asymmetric–symmetric row layout -->
+      <!-- center item grows more; side items stay narrow -->
       <div class="row row-5">
         <article class="col-1 row-5-item row-5-item-1">
           <h3>Butch Cassidy</h3>
@@ -91,6 +108,8 @@
         </article>
 
         <article class="col-2 row-5-item row-5-item-2">
+          <!-- middle panel is wider because of col-2 -->
+          <!-- again using flexbox instead of fixed widths to keep everything responsive -->
           <h3>Doc Holliday</h3>
           <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Doc_Holliday.jpg" alt="Oval portrait of Doc Holliday.">
           <p>Doc Holliday was a dentist turned gambler and gunfighter, best remembered as a close ally of Wyatt Earp and a participant in the Gunfight at the O.K. Corral.</p>
@@ -105,8 +124,15 @@
         </article>
       </div>
 
+      <!-- row 6 -->
+      <!-- this is the row where I tried reversing row 3 -->
+      <!-- wide panel on the LEFT, skinny panel on the RIGHT -->
+      <!-- but instead of copying row 3, I wanted to actually use flex properties differently -->
+      <!-- row-6-item-1 has col-3 so it grows more, row-6-item-2 stays smaller -->
       <div class="row row-6">
         <article class="col-3 row-6-item row-6-item-1">
+          <!-- big left panel (mirrored version of row 3's layout) -->
+          <!-- but here I'm letting flex-grow do the work instead of fixed layout -->
           <h3>Kit Carson</h3>
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Ambrotype_portrait_of_Kit_Carson_%28NBY_19583%29.jpg/500px-Ambrotype_portrait_of_Kit_Carson_%28NBY_19583%29.jpg" alt="Ambrotype portrait of Kit Carson.">
           <p>
@@ -116,6 +142,8 @@
         </article>
 
         <article class="col-1 row-6-item row-6-item-2">
+          <!-- skinny right panel -->
+          <!-- this completes the mirrored effect of row 3, but done in a new way -->
           <h3>Crazy Horse</h3>
           <img src="https://upload.wikimedia.org/wikipedia/en/7/7b/Crazy_Horse_drawing.jpg" alt="Illustration related to Crazy Horse and his band.">
           <p>
